@@ -1,0 +1,236 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf200
+{\fonttbl\f0\fnil\fcharset0 Verdana;\f1\fnil\fcharset0 Verdana-Bold;\f2\fnil\fcharset0 Verdana-Italic;
+}
+{\colortbl;\red255\green255\blue255;\red76\green78\blue78;\red0\green0\blue0;\red108\green5\blue211;
+\red0\green0\blue255;}
+{\*\expandedcolortbl;;\csgenericrgb\c29999\c30457\c30457;\csgenericrgb\c0\c0\c0;\csgenericrgb\c42337\c1841\c82833;
+\csgenericrgb\c0\c0\c100000;}
+\deftab480
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 (*\
+\pard\pardeftab480\slleading40\pardirnatural\partightenfactor0
+\cf2 	Created by Isaac Halvorson on 2019-01-16\
+	See more info at https://github.com/hisaac/FlipScreens\
+\
+	This is a simple, bespoke AppleScript I made to help with an annoying problem wherein plugging\
+	in multiple external monitors to my MacBook Pro almost always results in their rotation being\
+	incorrect. This script simply opens up the Display pane of System Preferences, and manually\
+	sets the rotation to the correct values.\
+\
+	This is currently setup to work specifically with my particular setup, so it most likely won't\
+	work for you as is. Maybe I'll make it more dynamic someday, but if you want to use it, you'll\
+	have to edit some things, namely the names of the windows (mine are "DELL P2717H (1)").\
+*)\cf3 \
+\
+
+\f1\b \cf3 use
+\f0\b0 \cf3  \cf4 AppleScript\cf3  \cf5 version\cf3  \cf3 "2.4"\cf3  \cf2 -- Yosemite (10.10) or later\cf3 \
+
+\f1\b \cf3 use
+\f0\b0 \cf3  
+\f2\i \cf5 framework
+\f0\i0 \cf3  \cf3 "Foundation"\cf3 \
+
+\f1\b \cf3 use
+\f0\b0 \cf3  
+\f2\i \cf5 scripting additions
+\f0\i0 \cf3 \
+\
+
+\f1\b \cf3 on
+\f0\b0 \cf3  
+\f1\b \cf5 run
+\f0\b0 \cf3 \
+	\
+	
+\f1\b \cf3 tell
+\f0\b0 \cf3  
+\f2\i \cf5 application
+\f0\i0 \cf3  \cf3 "System Preferences"\cf3 \
+		
+\f1\b \cf5 activate
+\f0\b0 \cf3 \
+		
+\f1\b \cf5 reveal
+\f0\b0 \cf3  
+\f2\i \cf5 anchor
+\f0\i0 \cf3  \cf3 "displaysDisplayTab"\cf3  
+\f1\b \cf3 of
+\f0\b0 \cf3  
+\f2\i \cf5 pane
+\f0\i0 \cf3  \cf3 "Displays"\cf3 \
+		
+\f1\b \cf5 delay
+\f0\b0 \cf3  \cf3 2\cf3 \
+	
+\f1\b \cf3 end
+\f0\b0 \cf3  
+\f1\b \cf3 tell
+\f0\b0 \cf3 \
+	\
+	
+\f1\b \cf3 tell
+\f0\b0 \cf3  
+\f2\i \cf5 application
+\f0\i0 \cf3  \cf3 "System Events"\cf3 \
+		
+\f1\b \cf3 tell
+\f0\b0 \cf3  
+\f2\i \cf5 pop up button
+\f0\i0 \cf3  \cf3 "Rotation:"\cf3  
+\f1\b \cf3 of
+\f0\b0 \cf3  
+\f2\i \cf5 tab group
+\f0\i0 \cf3  \cf3 1\cf3  
+\f1\b \cf3 of
+\f0\b0 \cf3  
+\f2\i \cf5 window
+\f0\i0 \cf3  \cf3 "DELL P2717H (2)"\cf3  
+\f1\b \cf3 of
+\f0\b0 \cf3  
+\f2\i \cf5 application process
+\f0\i0 \cf3  \cf3 "System Preferences"\cf3 \
+			
+\f1\b \cf3 if
+\f0\b0 \cf3  \cf4 value\cf3  
+\f1\b \cf3 is
+\f0\b0 \cf3  
+\f1\b \cf3 not
+\f0\b0 \cf3  \cf3 "Standard"\cf3  
+\f1\b \cf3 then
+\f0\b0 \cf3 \
+				
+\f1\b \cf5 click
+\f0\b0 \cf3 \
+				
+\f1\b \cf5 delay
+\f0\b0 \cf3  \cf3 0.5\cf3 \
+				
+\f1\b \cf5 pick
+\f0\b0 \cf3  
+\f2\i \cf5 menu item
+\f0\i0 \cf3  \cf3 "Standard"\cf3  
+\f1\b \cf3 of
+\f0\b0 \cf3  
+\f2\i \cf5 menu
+\f0\i0 \cf3  \cf3 1\cf3 \
+			
+\f1\b \cf3 end
+\f0\b0 \cf3  
+\f1\b \cf3 if
+\f0\b0 \cf3 \
+		
+\f1\b \cf3 end
+\f0\b0 \cf3  
+\f1\b \cf3 tell
+\f0\b0 \cf3 \
+		\
+		
+\f1\b \cf3 tell
+\f0\b0 \cf3  
+\f2\i \cf5 pop up button
+\f0\i0 \cf3  \cf3 "Rotation:"\cf3  
+\f1\b \cf3 of
+\f0\b0 \cf3  
+\f2\i \cf5 tab group
+\f0\i0 \cf3  \cf3 1\cf3  
+\f1\b \cf3 of
+\f0\b0 \cf3  
+\f2\i \cf5 window
+\f0\i0 \cf3  \cf3 "DELL P2717H (1)"\cf3  
+\f1\b \cf3 of
+\f0\b0 \cf3  
+\f2\i \cf5 application process
+\f0\i0 \cf3  \cf3 "System Preferences"\cf3 \
+			
+\f1\b \cf3 if
+\f0\b0 \cf3  \cf4 value\cf3  
+\f1\b \cf3 is
+\f0\b0 \cf3  
+\f1\b \cf3 not
+\f0\b0 \cf3  \cf3 "90\'b0"\cf3  
+\f1\b \cf3 then
+\f0\b0 \cf3 \
+				
+\f1\b \cf5 click
+\f0\b0 \cf3 \
+				
+\f1\b \cf5 delay
+\f0\b0 \cf3  \cf3 0.5\cf3 \
+				
+\f1\b \cf5 pick
+\f0\b0 \cf3  
+\f2\i \cf5 menu item
+\f0\i0 \cf3  \cf3 "90\'b0"\cf3  
+\f1\b \cf3 of
+\f0\b0 \cf3  
+\f2\i \cf5 menu
+\f0\i0 \cf3  \cf3 1\cf3 \
+				\
+				
+\f1\b \cf3 tell
+\f0\b0 \cf3  
+\f2\i \cf5 application process
+\f0\i0 \cf3  \cf3 "System Preferences"\cf3 \
+					
+\f1\b \cf5 delay
+\f0\b0 \cf3  \cf3 3\cf3 \
+					
+\f1\b \cf5 keystroke
+\f0\b0 \cf3  \cf4 tab\cf3 \
+					
+\f1\b \cf5 keystroke
+\f0\b0 \cf3  \cf4 space\cf3 \
+				
+\f1\b \cf3 end
+\f0\b0 \cf3  
+\f1\b \cf3 tell
+\f0\b0 \cf3 \
+			
+\f1\b \cf3 end
+\f0\b0 \cf3  
+\f1\b \cf3 if
+\f0\b0 \cf3 \
+		
+\f1\b \cf3 end
+\f0\b0 \cf3  
+\f1\b \cf3 tell
+\f0\b0 \cf3 \
+	
+\f1\b \cf3 end
+\f0\b0 \cf3  
+\f1\b \cf3 tell
+\f0\b0 \cf3 \
+	\
+	
+\f1\b \cf3 tell
+\f0\b0 \cf3  
+\f2\i \cf5 application
+\f0\i0 \cf3  \cf3 "System Preferences"\cf3 \
+		
+\f1\b \cf5 delay
+\f0\b0 \cf3  \cf3 1\cf3 \
+		
+\f1\b \cf5 quit
+\f0\b0 \cf3 \
+	
+\f1\b \cf3 end
+\f0\b0 \cf3  
+\f1\b \cf3 tell
+\f0\b0 \cf3 \
+	\
+
+\f1\b \cf3 end
+\f0\b0 \cf3  
+\f1\b \cf5 run
+\f0\b0 \cf3 \
+\
+\cf2 (*\
+Use the below for getting contents of window\
+\
+tell process "System Preferences"\
+	return entire contents of front window\
+end tell\
+*)\cf3 \
+}
